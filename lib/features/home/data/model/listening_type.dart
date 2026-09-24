@@ -1,0 +1,1 @@
+enum ListeningType { radio, recitation }
