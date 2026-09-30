@@ -42,13 +42,14 @@ class LocalNotificationsService {
     // TODO: Handle notification tap later.
   }
 
-  Future<bool?> requestNotificationPermission() async {
+  Future<void> requestNotificationPermission() async {
     final androidPlugin = _plugin
         .resolvePlatformSpecificImplementation<
           AndroidFlutterLocalNotificationsPlugin
         >();
 
-    return androidPlugin?.requestNotificationsPermission();
+    await androidPlugin?.requestNotificationsPermission();
+    await androidPlugin?.requestExactAlarmsPermission();
   }
 
   Future<void> showNotification({
